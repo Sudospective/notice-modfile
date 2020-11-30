@@ -17,6 +17,10 @@
 		P[pn]:x(scx)
 	end
 
+	-- i am finally free from sudden hidden hell
+	P[1]:SetHiddenRegions({{99.75, 100.25}})
+	P[2]:SetHiddenRegions({{95, 99.75}, {100.25, 101}})
+
 	function bigmood(beat)
 		swap {beat + 2.75, 0.25, outExpo, 'rldu'}
 		ease {beat + 3.5, 0.5, bounce, 1500, 'tinyz', 150, 'zoomy', -30, 'rotationx'}
@@ -36,9 +40,28 @@
 		ease {beat + 11.5, 0.5, bounce, 1500, 'tinyz', 150, 'zoomy', -30, 'rotationx'}
 	end
 
+	aux {'blacksphere'}
+	node {
+		'blacksphere',
+		function(blacksphere)
+			local invert = 50 - 50 * math.cos(blacksphere * math.pi / 180)
+			local alternate = 25 * math.sin(blacksphere * math.pi / 180)
+			local reverse = -12.5 * math.sin(blacksphere * math.pi / 180)
+			return invert, alternate, reverse
+		end,
+		'invert', 'alternate', 'reverse',
+	}
 
-	set {0, 1, 'clearall'}
-	set {0.1, 1.5, 'xmod', 0, 'stealthglow', (314.15 * 2), 'confusionzoffset'}
+
+
+	set {0, 100, 'clearall'}
+	set {0.1,
+		1.5, 'xmod',
+		0, 'stealthglow',
+		(314.15 * 2), 'confusionzoffset',
+		100, 'stealthpastreceptors',
+		100, 'stealthtype',
+	}
 
 	bigmood(0)
 
@@ -61,63 +84,169 @@
 
 	swap {28, 0.25, outExpo, 'ldur'}
 
-	ease {30.75, 0.5, spike, 5, 'xmod', 300, 'tiny'}
-	add {30.75, 0.5, inOutBack, 1, 'xmod', 50, 'mini'}
+	ease {30.5, 1, spike, 5, 'xmod', 300, 'tiny'}
+	add {30.5, 1, inOutBack, 1, 'xmod', 50, 'mini'}
 
 	ease {31.5, 1, spike, -2500, 'tiny', 50, 'reverse', 50, 'flip'}
-	ease {31.5, 0.5, inExpo, 0, 'mini'}
+	ease {31.5, 0.5, inExpo, 0, 'mini', 10, 'rotationx', 100, 'tiny'}
 	
-	for i = 31.5, 158.5, 1 do
-		add {i, 1, spike, 30, 'y'}
+	for i = 31.5, 158.5 do
+		add {i, 1, spike, 50, 'y'}
+	end
+	for i = 32, 158, 2 do
+		add {i, 1, bounce,
+			-20, 'rotationy',
+			-20, 'rotationz',
+			-20, 'rotaitonx',
+			-100, 'movez0',
+			(314.15 * 0.1), 'confusionyoffset0',
+			100, 'movez1',
+			-50, 'movey1',
+			-(314.15 * 0.1), 'confusionyoffset1',
+			-100, 'movez2',
+			25, 'movey2',
+			(314.15 * 0.1), 'confusionyoffset2',
+			100, 'movez3',
+			-(314.15 * 0.1), 'confusionyoffset3',
+			-400, 'parabolax',
+			-150, 'tiny',
+			-1000, 'tinyz',
+			-25, 'noteskewx',
+			25, 'skewx',
+		}
+		add {i + 1, 1, bounce,
+			20, 'rotationy',
+			20, 'rotationz',
+			-20, 'rotationx',
+			100, 'movez0',
+			-(314.15 * 0.1), 'confusionyoffset0',
+			-100, 'movez1',
+			25, 'movey1',
+			(314.15 * 0.1), 'confusionyoffset1',
+			100, 'movez2',
+			-50, 'movey2',
+			-(314.15 * 0.1), 'confusionyoffset2',
+			-100, 'movez3',
+			(314.15 * 0.1), 'confusionyoffset3',
+			400, 'parabolax',
+			-150, 'tiny',
+			-500, 'tinyz',
+			25, 'noteskewx',
+			-25, 'skewx'
+		}
 	end
 
+	add {35.5, 2, bell, 15, 'rotationz', -15, 'rotationx', 100, 'invert', -100, 'tiny'}
+	add {36, 1, bounce, 150, 'tipsy', -1000, 'tinyz'}
+	add {37.5, 2, bell, 15, 'rotationz', 15, 'rotationx', 100, 'flip', -100, 'tiny'}
+	add {36, 4.5, inOutBack, -360, 'rotationy', (314.15 * 2), 'confusionyoffset'}
+	add {38, 1, bounce, 1000, 'tinyz'}
+	add {38, 0.25, bounce, -50, 'drunk'}
+	add {38.25, 0.25, bounce, 50, 'drunk'}
+	add {38.5, 0.25, bounce, -50, 'drunk'}
+	add {38.75, 0.25, bounce, 50, 'drunk'}
 
-	set {95, 100, 'hidden', 400, 'hiddenoffset', plr = 1}
+	ease {47, 2, inOutExpo, 100, 'reverse'} -- dame
+
+	add {51.5, 2, bell, 15, 'rotationz', -15, 'rotationx', 100, 'invert', -100, 'tiny'}
+	add {52, 1, bounce, 150, 'tipsy', -1000, 'tinyz'}
+	add {53.5, 2, bell, 15, 'rotationz', 15, 'rotationx', 100, 'flip', -100, 'tiny'}
+	add {52, 4.5, inOutBack, -360, 'rotationy', (314.15 * 2), 'confusionyoffset'}
+	add {54, 1, bounce, 1000, 'tinyz'}
+	add {54, 0.25, bounce, -50, 'drunk'}
+	add {54.25, 0.25, bounce, 50, 'drunk'}
+	add {54.5, 0.25, bounce, -50, 'drunk'}
+	add {54.75, 0.25, bounce, 50, 'drunk'}
+
+	add {60, 4, inOutBack, -100, 'reverse', 360, 'rotationy', -(314.15 * 2), 'confusionyoffset'} -- identity
+
+	set {64, 0, 'rotationy', 0, 'confusionyoffset'}
+	
+	add {67.5, 2, bell, 15, 'rotationz', -15, 'rotationx', 100, 'invert', -100, 'tiny'}
+	add {68, 1, bounce, 150, 'tipsy', -1000, 'tinyz'}
+	add {69.5, 2, bell, 15, 'rotationz', 15, 'rotationx', 100, 'flip', -100, 'tiny'}
+	add {68, 4.5, inOutBack, -360, 'rotationy', (314.15 * 2), 'confusionyoffset'}
+	add {70, 1, bounce, 1000, 'tinyz'}
+	add {70, 0.25, bounce, -50, 'drunk'}
+	add {70.25, 0.25, bounce, 50, 'drunk'}
+	add {70.5, 0.25, bounce, -50, 'drunk'}
+	add {70.75, 0.25, bounce, 50, 'drunk'}
+
+	ease {79, 2, inOutExpo, 100, 'reverse'} -- kakeme
+
+	add {83.5, 2, bell, 15, 'rotationz', -15, 'rotationx', 100, 'invert', -100, 'tiny'}
+	add {84, 1, bounce, 150, 'tipsy', -1000, 'tinyz'}
+	add {85.5, 2, bell, 15, 'rotationz', 15, 'rotationx', 100, 'flip', -100, 'tiny'}
+	add {84, 4.5, inOutBack, -360, 'rotationy', (314.15 * 2), 'confusionyoffset'}
+	add {86, 1, bounce, 1000, 'tinyz'}
+	add {86, 0.25, bounce, -50, 'drunk'}
+	add {86.25, 0.25, bounce, 50, 'drunk'}
+	add {86.5, 0.25, bounce, -50, 'drunk'}
+	add {86.75, 0.25, bounce, 50, 'drunk'}
+
+	add {92, 4, inOutBack, -100, 'reverse', 360, 'rotationy', -(314.15 * 2), 'confusionyoffset'} -- identity
+
+	set {96, 0, 'rotationy', 0, 'confusionyoffset'}
+
+
+
+	set {95, 2.5, 'xmod', plr = 1}
 	set {95,
-		0.75, 'xmod',
-		100, 'sudden',
-		15, 'suddenoffset',
+		100, 'hidenoteflash',
+		400, 'sudden',
+		185, 'suddenoffset',
+		1.5, 'xmod',
 		50, 'reverse',
 		100, 'dark',
-		200, 'y',
+		300, 'y',
 		200, 'tiny',
 		-50, 'invert',
 		50, 'flip',
+		100, 'z',
 		plr = 2
 	}
-
-	ease {96, 4, linear, -80, 'hiddenoffset', plr = 1}
 	ease {96, 4, linear, -100, 'suddenoffset', plr = 2}
 
 	-- taro made this haunted house like 5x cleaner and comfier to read
+
+	-- KINA, KINA
 	set {95, -(314.15 * 0.5), 'confusionzoffset3', plr = 2}
 	add {95, 2, inOutBack, -(314.15 * 1), 'confusionzoffset2', (314.15 * 0.65), 'confusionzoffset3', plr = 2}
-	add {96, 1, pop, -500, 'tiny', 30, 'stealth'}
+	add {96, 1, pop, -600, 'tiny', 30, 'stealth'}
 	add {96, 1, pop, -60, 'confusionyoffset3', 60, 'confusionxoffset2', -25, 'invert', -100, 'y', plr = 2}
-	add {96, 1, outQuad, -250, 'tiny', -50, 'invert', -100, 'y', plr = 2}
+	add {96, 1, outQuad, -300, 'tiny', -25, 'invert', -200, 'y', plr = 2}
 	add {96, 2, inOutBack, (314.15 * 0.5), 'confusionzoffset2', -(314.15 * 0.3), 'confusionzoffset3', plr = 2}
-	add {97, 1, pop, -500, 'tiny', 30, 'stealth'}
+	add {97, 1, pop, -600, 'tiny', 30, 'stealth'}
 	add {97, 1, pop, 60, 'confusionyoffset3', -60, 'confusionxoffset2', -25, 'invert', -100, 'y', plr = 2}
-	add {97, 1, outQuad, -250, 'tiny', -50, 'invert', plr = 2}
+	add {97, 1, outQuad, -100, 'tiny', -25, 'invert', 50, 'y', plr = 2}
 	add {97, 3, inOutBack, (314.15 * 2), 'confusionxoffset3', -(314.15 * 2), 'confusionyoffset2', (314.15 * 0.5), 'confusionzoffset2', (314.15 * 0.3), 'confusionzoffset3', plr = 2}
-	add {98, 1, pop, -500, 'tiny', 30, 'stealth'}
+	add {98, 1, pop, -600, 'tiny', 30, 'stealth'}
 	add {98, 1, pop, -60, 'confusionyoffset3', 60, 'confusionxoffset2', -25, 'invert', -100, 'y', plr = 2}
-	add {98, 1, outQuad, -250, 'tiny', -50, 'invert', -50, 'y', plr = 2}
-	add {99, 1, pop, -500, 'tiny', 30, 'stealth'}
+	add {98, 1, outQuad, -100, 'tiny', -25, 'invert', -50, 'y', plr = 2}
+	add {99, 1, pop, -600, 'tiny', 30, 'stealth'}
 	add {99, 1, pop, 60, 'confusionyoffset3', -60, 'confusionxoffset2', -25, 'invert', -50, 'y', plr = 2}
-	ease {99, 1, inQuad, 0, 'tiny', 0, 'invert', 0, 'flip', 0, 'reverse', 0, 'y', plr = 2}
+	ease {99, 1, inQuad, 0, 'tiny', 0, 'invert', 0, 'flip', 0, 'reverse', 0, 'y', 0, 'z', plr = 2}
 
-	ease {100, 0, instant,
+	add {99.5, 1, spike, 50, 'stealth', -2000, 'tiny', 50, 'reverse', 50, 'flip'}
+
+	set {100,
+		0, 'hidenoteflash',
 		0, 'sudden',
 		0, 'suddenoffset',
 		0, 'hidden',
 		0, 'hiddenoffset',
-		2, 'xmod',
+		0, 'vanish',
+		0, 'vanishoffset',
+		0, 'vanishsize',
+		2.5, 'xmod',
 		0, 'reverse',
 		0, 'dark',
 		0, 'tiny',
 		0, 'invert',
 		0, 'flip',
+		0, 'y',
+		0, 'rotationy',
+		0, 'confusionyoffset',
 		0, 'confusionxoffset2',
 		0, 'confusionyoffset2',
 		0, 'confusionzoffset2',
@@ -125,6 +254,15 @@
 		0, 'confusionyoffset3',
 		0, 'confusionzoffset3'
 	}
+
+	ease {100, 32, linear, 360 * 16, 'blacksphere'}
+
+	for i = 100, 130, 2 do
+		add {i, 1, bounce, -20, 'y', -20, 'rotationy', plr = 1}
+		add {i, 1, bounce, 20, 'y', 20, 'rotationy', plr = 2}
+		add {i + 1, 1, bounce, 20, 'y', -20, 'rotationy', plr = 1}
+		add {i + 1, 1, bounce, -20, 'y', 20, 'rotationy', plr = 2}
+	end
 
 	
 	card {32, 95.5, 'if you hate the normal chart you should see the slumpage', 14, '#F53C3C'}
