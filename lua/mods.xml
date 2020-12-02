@@ -182,12 +182,11 @@
 	add {38.5, 0.25, bounce, -50, 'drunk'}
 	add {38.75, 0.25, bounce, 50, 'drunk'}
 
-	--swap {43.5, 1, inOutExpo, 'dlru'}
 	swap {44.5, 1, inOutExpo, 'dlru'}
 	swap {45.5, 1, inOutExpo, 'ldur'}
-	--swap {46.5, 1, inOutExpo, 'ldur'}
 
-	ease {47, 2, inOutExpo, 100, 'reverse'} -- tanmei
+	--add {47, 2, spike, -800, 'tiny', 10, 'xmod'} -- tanmei
+	ease {47, 2, inOutExpo, 100, 'reverse'}
 
 	add {51.5, 2, bell, 15, 'rotationz', -15, 'rotationx', 100, 'invert', -100, 'tiny'}
 	add {52, 1, bounce, 150, 'tipsy', -2000, 'tinyz'}
@@ -219,12 +218,11 @@
 	add {70.5, 0.25, bounce, -50, 'drunk'}
 	add {70.75, 0.25, bounce, 50, 'drunk'}
 
-	--swap {75.5, 1, inOutExpo, 'dlru'}
 	swap {76.5, 1, inOutExpo, 'dlru'}
 	swap {77.5, 1, inOutExpo, 'ldur'}
-	--swap {78.5, 1, inOutExpo, 'ldur'}
 
-	ease {79, 2, inOutExpo, 100, 'reverse'} -- kakumei
+	--add {79, 2, spike, -800, 'tiny', 10, 'xmod'} -- kakumei
+	ease {79, 2, inOutExpo, 100, 'reverse'}
 
 	add {83.5, 2, bell, 15, 'rotationz', -15, 'rotationx', 100, 'invert', -100, 'tiny'}
 	add {84, 1, bounce, 150, 'tipsy', -2000, 'tinyz'}
@@ -320,23 +318,23 @@
 	--ease {100, 32, linear, 360 * 16, 'blacksphere'} -- too unreadable .n.
 
 	for i = 100, 124, 8 do
-		add {i + 3, 2, inOutExpo, sw * 0.45, 'x', plr = 1}
-		add {i + 3, 2, inOutExpo, -sw * 0.45, 'x', plr = 2}
-		add {i + 7, 2, inOutExpo, -sw * 0.45, 'x', plr = 1}
-		add {i + 7, 2, inOutExpo, sw * 0.45, 'x', plr = 2}
+		add {i + 3, 2, inOutExpo, sw * 0.5, 'x', plr = 1}
+		add {i + 3, 2, inOutExpo, -sw * 0.5, 'x', plr = 2}
+		add {i + 7, 2, inOutExpo, -sw * 0.5, 'x', plr = 1}
+		add {i + 7, 2, inOutExpo, sw * 0.5, 'x', plr = 2}
 	end
 
 	add {100, 1, bounce, -200, 'tiny'}
 
-	add {102, 0.75, bounce, 200, 'wave', -2000, 'tinyz'}
+	add {102, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
 	add {103.25, 1, bell, 100, 'flip'}
 
 	add {104, 1, bounce, -200, 'tiny'}
 
-	add {106, 0.5, bounce, -2000, 'tinyz'}
-	add {107, 0.34, pop, 50, 'invert', -25, 'skewx'}
-	add {107.34, 0.33, pop, 50, 'invert', -25, 'skewx'}
-	add {107.67, 0.33, pop, 50, 'invert', -25, 'skewx'}
+	add {106, 0.5, pop, -4000, 'tinyz'}
+	add {107, 0.34, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+	add {107.34, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+	add {107.67, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
 
 	add {108, 1, bounce, -200, 'tiny'}
 
@@ -344,16 +342,82 @@
 	add {111.25, 1, bell, 100, 'flip'}
 
 	add {112, 1, bounce, -200, 'tiny'}
-	add {113, 1, bounce, -200, 'tiny', -25, 'skewx', 50, 'noteskewx', 25, 'flip'}
-	add {114, 1, bounce, -200, 'tiny', 25, 'skewx', -50, 'noteskewx', 25, 'flip'}
-	add {115, 1, bounce, -200, 'tiny', -25, 'skewx', 50, 'noteskewx', 25, 'flip'}
+	ease {113, 1, bounce,
+		-100, 'tiny',
+		-25, 'skewx',
+		50, 'noteskewx',
+		25, 'flip',
+		-(314.15 / 8), 'confusionyoffset',
+	}
+	ease {114, 1, bounce,
+		-100, 'tiny',
+		25, 'skewx',
+		-50, 'noteskewx',
+		25, 'flip',
+		(314.15 / 8), 'confusionyoffset',
+	}
+	ease {115, 1, bounce,
+		-100, 'tiny',
+		-25, 'skewx',
+		50, 'noteskewx',
+		25, 'flip',
+		-(314.15 / 8), 'confusionyoffset',
+	}
+
+
+	add {116, 1, bounce, -200, 'tiny'}
+
+	add {118, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
+	add {119.25, 1, bell, 100, 'flip'}
+
+	add {120, 1, bounce, -200, 'tiny'}
+
+	add {122, 0.5, pop, -4000, 'tinyz'}
+	add {123, 0.34, pop, 50, 'invert', 0.5, 'xmod'}
+	add {123.34, 0.33, pop, 50, 'invert', 0.5, 'xmod'}
+	add {123.67, 0.33, pop, 50, 'invert', 0.5, 'xmod'}
+
+	add {124, 1, bounce, -200, 'tiny'}
+
+	add {126, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
+	add {127.25, 1, bell, 100, 'flip'}
+
+	add {128, 1, bounce, -200, 'tiny'}
+	ease {129, 1, bounce,
+		-100, 'tiny',
+		-25, 'skewx',
+		50, 'noteskewx',
+		25, 'flip',
+		-(314.15 / 8), 'confusionyoffset',
+	}
+	ease {130, 1, bounce,
+		-100, 'tiny',
+		-15, 'skewx',
+		-30, 'noteskewx',
+		25, 'flip',
+		(314.15 / 8), 'confusionyoffset',
+		140, 'zoomy',
+		4000, 'tinyz'
+	}
+	ease {131, 1, bounce,
+		-100, 'tiny',
+		15, 'skewx',
+		30, 'noteskewx',
+		25, 'flip',
+		-(314.15 / 8), 'confusionyoffset',
+		80, 'zoomy',
+		-1000, 'tinyz'
+	}
+	add {131, 0.34, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+	add {131.34, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+	add {131.67, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
 	
-	add {132, 1, outExpo, sw * 0.2, 'x', plr = 1}
-	add {132, 1, outExpo, -sw * 0.2, 'x', plr = 2}
+	add {132, 1, outExpo, sw * 0.25, 'x', plr = 1}
+	add {132, 1, outExpo, -sw * 0.25, 'x', plr = 2}
 
 
 	card {32, 95.5, 'if you hate the normal chart you should see the slumpage', 14, '#F53C3C'}
-	card {96, 100.5, 'Unhanted House', 11, '#C9E6D3'}
+	card {95.75, 100, 'Unhanted House', 11, '#C9E6D3'}
 	card {101, 115.5, 'it originally had blacksphere', 15, '#282828'}
 	
 end)"
