@@ -22,11 +22,11 @@
 	P[2]:SetHiddenRegions({{95, 99.75}, {100.25, 101}})
 
 	function bigmood(beat)
-		swap {beat + 2.75, 0.25, outExpo, 'rldu'}
+		swap {beat + 2.75, 1, outElastic, 'rldu'}
 		ease {beat + 3.5, 0.5, bounce, 1500, 'tinyz', 150, 'zoomy', -30, 'rotationx'}
 
 		ease {beat + 6.75, 0.5, inExpo, 50, 'stealth'}
-		swap {beat + 6.75, 0.25, outExpo, 'ldur'}
+		swap {beat + 6.75, 0.5, outExpo, 'ldur'}
 		set {beat + 6.75, 0, 'hide'}
 		set {beat + 7.25, 0, 'hide'}
 		set {beat + 7.375, 100, 'hide'}
@@ -36,7 +36,7 @@
 		set {beat + 7.875, 100, 'hide'}
 		set {beat + 8, 0, 'hide', 0, 'stealth'}
 
-		swap {beat + 10.75, 0.25, outExpo, 'durl'}
+		swap {beat + 10.75, 1, outElastic, 'durl'}
 		ease {beat + 11.5, 0.5, bounce, 1500, 'tinyz', 150, 'zoomy', -30, 'rotationx'}
 	end
 
@@ -107,7 +107,7 @@
 	end
 
 	ease {15, 1, pop, 30, 'stealth'}
-	swap {15, 0.25, outExpo, 'dlru'}
+	swap {15, 0.25, outBack, 'dlru'}
 	ease {15, 1, bounce, -30, 'cross', 15, 'reverse'}
 	ease {14.5, 1, spike, -2000, 'tiny', 300, 'tipsy', 150, 'drunk'}
 	ease {15, 1, outQuint, 0, 'confusionzoffset'}
@@ -128,7 +128,7 @@
 		add {i, 1, spike, 50, 'y'}
 	end
 	
-	local t = {48, 64, 80, 96}
+	local t = {48, 64, 80, 96, 148}
 	local k = 1
 	for i = 32, 158, 2 do
 		for _, v in ipairs(t) do
@@ -151,6 +151,8 @@
 			-1000, 'tinyz',
 			-25, 'noteskewx',
 			25, 'skewx',
+			-5, 'twirl',
+			5, 'roll'
 		}
 		add {i + 1, 1, bounce,
 			15, 'rotationy',
@@ -166,7 +168,9 @@
 			-150, 'tiny',
 			-500, 'tinyz',
 			25, 'noteskewx',
-			-25, 'skewx'
+			-25, 'skewx',
+			5, 'twirl',
+			-5, 'roll'
 		}
 	end
 
@@ -315,7 +319,6 @@
 	add {100, 0.5, outExpo, -sw * 0.25, 'x', plr = 1}
 	add {100, 0.5, outExpo, sw * 0.25, 'x', plr = 2}
 
-	--ease {100, 32, linear, 360 * 16, 'blacksphere'} -- too unreadable .n.
 
 	for i = 100, 124, 8 do
 		add {i + 3, 2, inOutExpo, sw * 0.5, 'x', plr = 1}
@@ -341,6 +344,7 @@
 	add {110, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
 	add {111.25, 1, bell, 100, 'flip'}
 
+	ease {112, 4, linear, 360 * 2, 'blacksphere'}
 	add {112, 1, bounce, -200, 'tiny'}
 	ease {113, 1, bounce,
 		-100, 'tiny',
@@ -364,7 +368,6 @@
 		-(314.15 / 8), 'confusionyoffset',
 	}
 
-
 	add {116, 1, bounce, -200, 'tiny'}
 
 	add {118, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
@@ -382,6 +385,7 @@
 	add {126, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
 	add {127.25, 1, bell, 100, 'flip'}
 
+	ease {128, 4, linear, 0, 'blacksphere'}
 	add {128, 1, bounce, -200, 'tiny'}
 	ease {129, 1, bounce,
 		-100, 'tiny',
@@ -408,17 +412,102 @@
 		80, 'zoomy',
 		-1000, 'tinyz'
 	}
+
 	add {131, 0.34, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
 	add {131.34, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
 	add {131.67, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
-	
+
+
+	--ease {132, 28, linear, 360 * 14, 'blacksphere'} -- too unreadable .n.
+
 	add {132, 1, outExpo, sw * 0.25, 'x', plr = 1}
 	add {132, 1, outExpo, -sw * 0.25, 'x', plr = 2}
+	set {132, 0, 'rotationz', 0, 'confusionzoffset'}
+
+	add {132, 1, bounce, -200, 'tiny'}
+
+	add {134, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
+	add {135.25, 1, bell, 100, 'flip'}
+
+	add {136, 1, bounce, -200, 'tiny'}
+
+	add {138, 0.5, pop, -4000, 'tinyz'}
+	add {139, 0.34, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+	add {139.34, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+	add {139.67, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+
+	add {140, 1, bounce, -200, 'tiny'}
+
+	add {142, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
+	add {143.25, 1, bell, 100, 'flip'}
+
+	add {143, 2, inOutBack, 180, 'blacksphere'}
+	add {144, 2, inOutBack, 180, 'blacksphere'}
+	add {145, 2, inOutBack, 180, 'blacksphere'}
+	add {146, 2, inOutBack, 180, 'blacksphere'}
+	add {144, 1, bounce, -100, 'tiny'}
+	ease {145, 1, bounce,
+		-50, 'tiny',
+		-25, 'skewx',
+		50, 'noteskewx',
+		25, 'flip',
+		-(314.15 / 8), 'confusionyoffset',
+	}
+	ease {146, 1, bounce,
+		-50, 'tiny',
+		25, 'skewx',
+		-50, 'noteskewx',
+		25, 'flip',
+		(314.15 / 8), 'confusionyoffset',
+	}
+	ease {147, 1, bounce,
+		-50, 'tiny',
+		-25, 'skewx',
+		50, 'noteskewx',
+		25, 'flip',
+		-(314.15 / 8), 'confusionyoffset',
+	}
+	
+	ease {147, 2, inOutExpo, 100, 'reverse'}
+
+	add {148, 1, bounce, -200, 'tiny'}
+
+	add {150, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
+	add {151.25, 1, bell, 100, 'flip'}
+
+	add {152, 1, bounce, -200, 'tiny'}
+
+	add {154, 0.5, pop, -4000, 'tinyz'}
+	add {155, 0.34, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+	add {155.34, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+	add {155.67, 0.33, pop, 50, 'invert', 15, 'skewx', 0.5, 'xmod'}
+
+	add {156, 1, bounce, -200, 'tiny'}
+
+	add {158, 0.75, bounce, 200, 'wave', 4000, 'tinyz'}
+	add {159.25, 1, bell, 100, 'flip'}
+	
+	ease {157, 6, inOutBack,
+		180, 'rotationy',
+		(314.15), 'confusionyoffset',
+		180, 'rotationz',
+		-(314.15), 'confusionzoffset',
+		50, 'tipsy',
+		50, 'drunk',
+		0, 'blacksphere'
+	}
+	ease {159, 2, inOutExpo, 0, 'reverse', 0, 'tiny'}
+
+	ease {162, 2, inExpo, 480, 'y'}
 
 
-	card {32, 95.5, 'if you hate the normal chart you should see the slumpage', 14, '#F53C3C'}
-	card {95.75, 100, 'Unhanted House', 11, '#C9E6D3'}
-	card {101, 115.5, 'it originally had blacksphere', 15, '#282828'}
+	card {0, 31.5, 'they used to be random', 11, '#323ca8'}
+	card {32, 95.5, 'Bouncezoom', 14, '#f53c3c'}
+	card {95.75, 100, 'when i said make it easier i didnt mean the smooth the motion sudo', 12, '#a032a8'}
+	card {101, 131.5, 'SENPAI ONEGAI NOTTISU MII', 15, '#282828'}
+	card {132, 159.5, 'Bouncezoom 2: Bouncic Zoomaloo', 15, '#c9e6d3'}
+	card {160, 164, 'it got too tired', 13, '#32a87d'}
+
 	
 end)"
 Type = "ActorFrame"

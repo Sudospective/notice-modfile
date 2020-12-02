@@ -23,18 +23,21 @@
 #FGCHANGES:0.000=template/main.xml=1.000=0=0=1=====,
 ;
 
-#SPELLCARDS:32.000=95.500=if you hate the normal chart you should see the slumpage=14=0.961^0.235^0.235^1.000
-95.750=100.000=Unhanted House=11=0.788^0.902^0.827^1.000
-101.000=115.500=it originally had blacksphere=15=0.157^0.157^0.157^1.000
+#SPELLCARDS:0.000=31.500=they used to be random=11=0.196^0.235^0.659^1.000
+32.000=95.500=Bouncezoom=14=0.961^0.235^0.235^1.000
+95.750=100.000=when i said make it easier i didnt mean the smooth the motion sudo=12=0.627^0.196^0.659^1.000
+101.000=131.500=SENPAI ONEGAI NOTTISU MII=15=0.157^0.157^0.157^1.000
+132.000=159.500=Bouncezoom 2: Bouncic Zoomaloo=15=0.788^0.902^0.827^1.000
+160.000=164.000=it got too tired=13=0.196^0.659^0.490^1.000
 ;
 
 #KEYSOUNDS:;
 
-//---------------dance-single - すどちゃん----------------
+//---------------dance-single - ----------------
 #NOTES:
      dance-single:
-     すどちゃん:
-     Edit:
+     :
+     Challenge:
      15:
      0.665,0.724,0.051,0.089,0.806:
 0000
